@@ -1,58 +1,61 @@
-VueRunner is a simple library for quickly prototyping single *.vue files without #[a(href='https://cli.vuejs.org/guide/prototyping.html#instant-prototyping') requiring global addons].
+VueRunner is a simple library for quickly prototyping single *.vue files [without requiring global addons](https://cli.vuejs.org/guide/prototyping.html#instant-prototyping).
 
-Launch any *.vue file from any NodeJS script with one line of code:
+Use VueRunner to launch any *.vue file from any NodeJS script with one line of code:
 
-```
+```javascript
 new require('vue-runner')('./Example.vue');
 ```
 
-This makes it much easier to incorporate Vue interfaces into backend scripts and CLI programs.
+VueRunner makes it easy to incorporate Vue UI pages into backend scripts and CLI programs.
 
 VueRunner includes support for typescript, pug, scss, and svg. With one additional method you can attach a backend ExpressJS server for quickly prototyping of API commands.
 
 # Installing
 
-```
+```bash
 npm install vue-runner
-# or
+# --- or ---
 yard add vue-runner
 ```
 
 # Creating a Simple Frontend
 Initialize VueRunner from any js/ts file and reference your *.vue component as the first argument.
 
-example.ts:
-```
+*example.ts*:
+```typescript
 import VueRunner from 'vue-runner';
 
 new VueRunner('./Example.vue');
-    .isReady.then(() => console.log('READY!!'));
+  .isReady.then(() => console.log('READY!!'));
 ```
 
-Example.vue:
+*Example.vue*:
 ```
 <template>
-    <h1>Hello!!</h1>
+  <h1>Hello!!</h1>
 </template>
 ```
 
-Your *.vue file has all the capabilities of a normal vue template, which means it can load full-blown vue components that import and reference other components.
+VueRunner supports all the capabilities of a normal vue template, which means it can load full-blown vue components that import and reference other components.
 
 Complex.vue:
 ```
 <template>
-    <h1>Hello!!</h1>
-    <my-counter/>
+  <h1>Hello!!</h1>
+  <my-counter/>
 </template>
 
 <script lang="ts">
-    import MyCounter from './MyCounter.vue';
+  import MyCounter from './MyCounter.vue';
+
+  @Component({ components { MyCounter } })
+  export default class App extends Vue {}
 </script>
 ```
 
 # Adding a Simple Backend API
 
-If your .vue components needs a backend API, launch it with one command from your NodeJS script:
+If your vue file needs a backend API, VueRunner's attachAPI method makes this easy:
 
 example.ts:
 ```
@@ -66,7 +69,9 @@ new VueRunner('./API.vue');
   });
 ```
 
-API routes run on the same port as the frontend UI but under the `/api` path. This removes the need for complex CORS configuration.
+The `apiServer` object is a standard [ExpressJS](https://expressjs.com/) instance. 
+
+Your routes run on the same port as the frontend UI but under the `/api` path. This removes the need for complex CORS configuration.
 
 Use our simple API helper library to access with from frontend Vue components.
 
@@ -95,11 +100,14 @@ API.vue
 new VueRunner(pathToVueFile: string, options?: Options) => instance
 
 Options:
-- port
+- port - string
+- title - string
 
 instance.isReady => Promise
 
 instance.attachAPI((apiServer) => void)
+
+instance.on((event) => void)
 
 Events:
 - listening
@@ -108,4 +116,5 @@ Events:
 
 # ToDo:
 
-- Write tests!
+- Write unit tests
+- Figure out how to expose vue/webpack configuration and plugins
