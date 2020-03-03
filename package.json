@@ -2,6 +2,8 @@
   "name": "vue-runner",
   "description": "Easily launch and run any *.vue file as a standalone app",
   "version": "0.1.1",
+  "author": "Caleb Clark",
+  "homepage": "https://github.com/ulixee/vue-runner",
   "license": "MIT",
   "scripts": {
     "test": "./test/testit.ts",
