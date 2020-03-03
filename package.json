@@ -1,7 +1,7 @@
 {
   "name": "vue-runner",
-  "description": "Easily launch and run any *.vue file as a standalone app",
-  "version": "0.1.1",
+  "description": "Easily launch and run any *.vue file without setting up a full-blown vue project configuration",
+  "version": "0.1.2",
   "author": "Caleb Clark",
   "homepage": "https://github.com/ulixee/vue-runner",
   "license": "MIT",
@@ -19,6 +19,9 @@
     "@types/webpack": "^4.41.7",
     "@types/webpack-dev-middleware": "^3.7.0",
     "@types/webpack-hot-middleware": "^2.25.0",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-typescript": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "core-js": "^3.6.4",
@@ -41,9 +44,7 @@
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.6",
     "webpack-dev-middleware": "^3.7.2",
-    "webpack-hot-middleware": "^2.25.0",
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-typescript": "~4.2.0",
-    "@vue/cli-service": "~4.2.0"
-  }
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "devDependencies": {}
 }

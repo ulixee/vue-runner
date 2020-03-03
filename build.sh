@@ -6,6 +6,7 @@ npm run tsc
 
 mkdir ./dist/public
 cp -a public/. dist/public
+cp ./README.md dist/README.md
 
 cd ./dist
 

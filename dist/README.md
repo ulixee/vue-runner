@@ -1,18 +1,18 @@
-VueRunner is a simple library for quickly prototyping single *.vue files [without requiring global addons](https://cli.vuejs.org/guide/prototyping.html#instant-prototyping).
+VueRunner is a simple library for quickly prototyping single *.vue files without #[a(href='https://cli.vuejs.org/guide/prototyping.html#instant-prototyping') requiring global addons].
 
-Use VueRunner to launch any *.vue file from any NodeJS script with one line of code:
+Launch any *.vue file from any NodeJS script with one line of code:
 
-```javascript
+```
 new require('vue-runner')('./Example.vue');
 ```
 
-VueRunner makes it easy to incorporate Vue UI pages into backend scripts and CLI programs.
+This makes it much easier to incorporate Vue interfaces into backend scripts and CLI programs.
 
 VueRunner includes support for typescript, pug, scss, and svg. With one additional method you can attach a backend ExpressJS server for quickly prototyping of API commands.
 
 # Installing
 
-```bash
+```
 npm install vue-runner
 # or
 yard add vue-runner
@@ -22,7 +22,7 @@ yard add vue-runner
 Initialize VueRunner from any js/ts file and reference your *.vue component as the first argument.
 
 example.ts:
-```typescript
+```
 import VueRunner from 'vue-runner';
 
 new VueRunner('./Example.vue');
