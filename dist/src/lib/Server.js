@@ -67,7 +67,7 @@ class Server {
     startUI(vueTemplatePath) {
         const uiServer = express_1.default();
         uiServer.use(morgan_1.default('dev'));
-        uiServer.use(body_parser_1.default.json());
+        uiServer.use(body_parser_1.default.json({ limit: '2gb' }));
         uiServer.use(body_parser_1.default.urlencoded({ extended: true }));
         uiServer.engine('handlebars', express_handlebars_1.default());
         uiServer.set('view engine', 'handlebars');
@@ -81,10 +81,10 @@ class Server {
             webpackConfig.entry.app[0] = jsAppEntryPath;
         }
         webpackConfig.resolve.alias.dynamicAppTemplate = vueTemplatePath;
-        console.log(''.padEnd(150, '-'));
-        console.log(JSON.stringify(webpackConfig, null, 2));
+        // console.log(''.padEnd(150, '-'));
+        // console.log(JSON.stringify(webpackConfig, null, 2));
         // console.log(cliService);
-        console.log(''.padEnd(150, '-'));
+        // console.log(''.padEnd(150, '-'));
         const compiler = webpack_1.default(webpackConfig);
         const devMiddleware = webpack_dev_middleware_1.default(compiler, { publicPath: webpackConfig.output.publicPath });
         const hotMiddleware = webpack_hot_middleware_1.default(compiler);

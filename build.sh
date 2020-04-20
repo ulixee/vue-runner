@@ -1,14 +1,10 @@
 #!/bin/bash
 
-npm run tsc
+npm run compile
 
-./build.ts
+./build-package-json.ts
+./build-tsconfig.ts
 
 mkdir ./dist/public
 cp -a public/. dist/public
 cp ./README.md dist/README.md
-
-cd ./dist
-
-yarn install
-

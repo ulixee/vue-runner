@@ -86,7 +86,7 @@ export default class Server {
 
     uiServer.use(Logger('dev'));
 
-    uiServer.use(BodyParser.json());
+    uiServer.use(BodyParser.json({ limit: '2gb'}));
     uiServer.use(BodyParser.urlencoded({ extended: true }));
 
     uiServer.engine('handlebars', ExpressHandlebars());
@@ -104,10 +104,10 @@ export default class Server {
     }
     webpackConfig.resolve.alias.dynamicAppTemplate = vueTemplatePath;
 
-    console.log(''.padEnd(150, '-'));
-    console.log(JSON.stringify(webpackConfig, null, 2));
+    // console.log(''.padEnd(150, '-'));
+    // console.log(JSON.stringify(webpackConfig, null, 2));
     // console.log(cliService);
-    console.log(''.padEnd(150, '-'));
+    // console.log(''.padEnd(150, '-'));
 
     const compiler = Webpack(webpackConfig);
     const devMiddleware = WebpackDevMiddleware(compiler, { publicPath: webpackConfig.output.publicPath });

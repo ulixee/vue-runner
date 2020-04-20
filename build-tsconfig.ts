@@ -8,15 +8,6 @@ import * as Fs from 'fs';
 // @ts-ignore
 const DIST_DIR = Path.join(__dirname, 'dist');
 
-// CUSTOMIZE AND SAVE PACKAGE.JSON
-// @ts-ignore
-const pkg = require('./package.json');
-delete pkg.devDependencies;
-delete pkg.scripts;
-const packageDistPath = Path.join(DIST_DIR, 'package.json');
-Fs.writeFileSync(packageDistPath, JSON.stringify(pkg, null, 2));
-console.log(`Created ./dist/package.json`);
-
 // CUSTOMIZE AND SAVE TSCONFIG.JSON
 // @ts-ignore
 const tsconfigPath = Path.join(__dirname, 'tsconfig.json');
